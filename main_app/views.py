@@ -37,7 +37,11 @@ def add_feeding(request, cat_id):
 
 class CatCreate(CreateView):
     model = Cat
-    fields = '__all__'
+    fields = ['name', 'breed', 'description', 'age']
+    
+    def form_valid(self, form):
+        return super().form_valid(form)
+    
     success_url = '/cats/'
 
 class CatUpdate(UpdateView):
